@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -eu
+HEALTHY=0
+UNHEALTHY=1
+
+if [ "$1" = "migrate" ]; then
+  echo "Running migrations"
+  make migrate
+  echo "Migrations complete"
+  exit $HEALTHY
+elif [ "$1" = "seed" ]; then
+  echo "Seeding database"
+  make seed
+  echo "Seeding complete"
+  exit $HEALTHY
+elif [ "$1" = "serve" ]; then
+    echo "Starting server"
+    make run-dev
+    exit $HEALTHY
+
+else
+  echo "Unknown command"
+  exit $UNHEALTHY
+fi

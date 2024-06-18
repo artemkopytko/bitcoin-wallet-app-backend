@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  redis:
+    container_name: ${APP_NAME}-redis
+    image: 'redis:latest'
+    env_file:
+      - .env
+    command: redis-server /usr/local/etc/redis/redis.conf --requirepass ${REDIS_PASSWORD}
+    restart: always
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - ${REDIS_PORT:-6379}:6379
+    networks:
+      - internal
+
+  mysql:
+    container_name: ${APP_NAME}-mysql
+    image: mysql:8.0.29
+    restart: always
+    env_file:
+      - .env
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - ${MYSQL_PORT:-3306}:3306
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - internal
+
+volumes:
+  redis:
+  mysql:
+
+networks:
+  internal:
+    driver: bridge
