@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Providers;
+
+use Date;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        if ($this->app->environment('local') ||
+            $this->app->environment('development') ||
+            $this->app->environment('production')
+        ) {
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
+        }
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        //
+    }
+}
