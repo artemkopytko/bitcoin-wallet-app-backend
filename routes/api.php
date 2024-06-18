@@ -6,6 +6,7 @@ use App\Http\Controllers\AssetController;
 use App\Http\Controllers\AssetHoldingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CreditPositionController;
+use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MarketController;
@@ -129,6 +130,13 @@ Route::group(
         Route::get('/{user}/deposits', [UserController::class, 'deposits']);
         Route::get('/{user}/withdrawals', [UserController::class, 'withdrawals']);
         Route::get('/{user}/events', [UserController::class, 'events']);
+    }
+);
+
+Route::group(
+    ['prefix' => 'currencies', 'middleware' => 'auth:api'],
+    function (): void {
+        Route::get('/BTC', [CurrencyController::class, 'getBitcoinCurrency']);
     }
 );
 
