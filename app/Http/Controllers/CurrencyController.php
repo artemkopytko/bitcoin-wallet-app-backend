@@ -31,8 +31,8 @@ class CurrencyController extends Controller
         $eur = Currency::where('code', 'EUR')->first();
 
         return new SuccessResponse([
-            'usd' => $bitcoin->price,
-            'eur' => $bitcoin->price / $eur->price,
+            'usd' => (float) $bitcoin->price,
+            'eur' => (float) $bitcoin->price / $eur->price,
         ]);
     }
 }
