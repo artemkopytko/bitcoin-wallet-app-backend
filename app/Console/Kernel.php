@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('app:app:update-fiat-currencies')
+        $schedule->command('app:update-fiat-currencies')
             ->everyFifteenMinutes()
             ->runInBackground()
             ->withoutOverlapping();
