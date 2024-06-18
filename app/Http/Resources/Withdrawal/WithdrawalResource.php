@@ -23,6 +23,7 @@ class WithdrawalResource extends JsonResource
             'requisites' => $this->requisites,
             'status' => $this->status,
             'method' => $this->method,
+            'currency' => $this->currency,
             'user_id' => $this->user_id,
             'created_at' => (int)$this->resource->created_at->timestamp,
             'updated_at' => (int)$this->resource->updated_at->timestamp,

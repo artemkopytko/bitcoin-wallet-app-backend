@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $id
  * @property integer $user_id
  * @property numeric $amount
+ * @property string $currency
  * @property string $requisites
  * @property boolean $is_calculated
  * @property WithdrawalStatuses $status
@@ -35,6 +36,7 @@ class Withdrawal extends Model
         'status',
         'method',
         'admin_notes',
+        'currency'
     ];
 
     protected $casts = [

@@ -29,6 +29,7 @@ class WithdrawalAddRequest extends JsonRequest
             'status' => 'nullable|integer|in:' . $statuses,
             'method' => 'nullable|integer|in:' . $methods,
             'admin_notes' => 'nullable|string',
+            'currency' => 'required|string'
         ];
     }
 }

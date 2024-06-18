@@ -119,6 +119,7 @@ class WithdrawalController extends Controller
         $item->user_id = $request->input('user_id');
         $item->amount = $request->input('amount');
         $item->requisites = $request->input('requisites');
+        $item->currency = $request->input('currency');
 
         if ($request->has('status')) {
             $item->status = $request->input('status');
