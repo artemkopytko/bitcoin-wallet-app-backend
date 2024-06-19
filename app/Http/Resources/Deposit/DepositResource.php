@@ -33,7 +33,7 @@ class DepositResource extends JsonResource
             'user_id' => $this->resource->user_id ?? null,
             'wallet_id' => $this->resource->wallet_id ?? null,
             'staff_id' => $this->resource->staff_id ?? null,
-            'amount' => $this->resource->amount,
+            'amount' => (float) $this->resource->amount,
             'status' => $this->resource->status,
             'created_at' => (int)$this->resource->created_at->timestamp,
             'updated_at' => (int)$this->resource->updated_at->timestamp,
