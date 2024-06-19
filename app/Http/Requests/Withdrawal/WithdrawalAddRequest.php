@@ -24,7 +24,7 @@ class WithdrawalAddRequest extends JsonRequest
 
         return [
             'user_id' => 'nullable|integer|exists:users,id',
-            'amount' => 'required|numeric|min:0.01',
+            'amount' => 'required|numeric|min:0.00001',
             'requisites' => 'required|string',
             'status' => 'nullable|integer|in:' . $statuses,
             'method' => 'nullable|integer|in:' . $methods,

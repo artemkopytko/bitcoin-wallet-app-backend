@@ -22,7 +22,7 @@ class DepositAddRequest extends JsonRequest
         return [
             'user_id' => 'nullable|integer|exists:users,id',
             'wallet_id' => 'nullable|integer|exists:wallets,id',
-            'amount' => 'required|numeric|min:0.01',
+            'amount' => 'required|numeric|min:0.00001',
             'status' => 'nullable|integer|in:' . $statuses,
             'note' => 'nullable|string',
         ];
