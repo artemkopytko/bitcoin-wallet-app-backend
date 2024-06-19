@@ -19,7 +19,7 @@ class WithdrawalResource extends JsonResource
 
         $data = [
             'id' => $this->id,
-            'amount' => $this->amount,
+            'amount' => (float) $this->amount,
             'requisites' => $this->requisites,
             'status' => $this->status,
             'method' => $this->method,
