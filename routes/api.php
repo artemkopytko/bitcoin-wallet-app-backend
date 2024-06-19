@@ -35,6 +35,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('password/request-reset', [AuthController::class, 'requestResetPassword']);
+Route::post('password/reset', [AuthController::class, 'resetPassword']);
+
 Route::group(
     ['prefix' => 'auth'],
     function (): void {
@@ -46,8 +49,6 @@ Route::group(
                 Route::post('logout', [AuthController::class, 'logout']);
                 Route::post('refresh', [AuthController::class, 'refresh']);
                 Route::post('password', [AuthController::class, 'changePassword']);
-                Route::post('password/request-reset', [AuthController::class, 'requestResetPassword']);
-                Route::post('password/reset', [AuthController::class, 'resetPassword']);
             }
         );
         Route::group(
