@@ -7,6 +7,7 @@ namespace App\Http\Resources\Wallet;
 use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Resources\Json\JsonResource;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class WalletResource extends JsonResource
 {
@@ -31,6 +32,7 @@ class WalletResource extends JsonResource
             'is_active' => (bool) $this->resource->is_active,
             'created_at' => (int) $this->resource->created_at->timestamp,
             'updated_at' => (int) $this->resource->updated_at->timestamp,
+            'qr_code' => (string) QrCode::format('svg')->size(300)->generate($this->resource->address),
         ];
 
         if (!$user->hasRole('user')) {
