@@ -110,6 +110,7 @@ class User extends Authenticatable implements LaratrustUser, JWTSubject, MustVer
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'balance' => 'decimal:8',
     ];
 
     public function usd_balance(): float
