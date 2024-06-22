@@ -129,7 +129,7 @@ class User extends Authenticatable implements LaratrustUser, JWTSubject, MustVer
         $data = Currency::getCurrencyPrice('EUR');
 
         if ($data) {
-            return self::usd_balance() * $data['price'];
+            return self::usd_balance() / $data['price'];
         }
 
         return 0;
