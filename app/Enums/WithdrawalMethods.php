@@ -12,4 +12,5 @@ enum WithdrawalMethods: int
     case ETH = 3;
     case BNB = 4;
     case USDT_TRC_20 = 5;
+    case BANK_TRANSFER_MIR = 6;
 }

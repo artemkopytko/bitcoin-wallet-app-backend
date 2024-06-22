@@ -89,6 +89,13 @@ class WithdrawalController extends Controller
             $request->merge(['user_id' => $user->id]);
         }
 
+        $requestUser = User::findOrFail($request->input('user_id'));
+
+        // Check balance
+        if ($requestUser->balance < (float) $request->input('amount')) {
+            throw new \Exception('Not enough balance');
+        }
+
         $item = new Withdrawal();
         $this->fillAndSave($request, $item);
 
