@@ -7,6 +7,7 @@ namespace App\Exceptions;
 use App\Enums\ApiError;
 use App\Http\Responses\ErrorResponse;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Sentry\Laravel\Integration;
 use Throwable;
 use Illuminate\Auth\AuthenticationException;
 
@@ -29,7 +30,7 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->reportable(function (Throwable $e) {
-            //
+            Integration::captureUnhandledException($e);
         });
     }
 

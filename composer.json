@@ -22,6 +22,7 @@
         "predis/predis": "^2.2",
         "santigarcor/laratrust": "^8.2",
         "scheb/yahoo-finance-api": "^4.8",
+        "sentry/sentry-laravel": "^4.7",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "tymon/jwt-auth": "^2.0"
     },

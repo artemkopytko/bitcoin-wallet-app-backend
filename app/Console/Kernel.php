@@ -12,6 +12,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
+        // Prune telescope logs older than 48 hours
+        $schedule->command('telescope:prune --hours=48')->daily();
+
         $schedule->command('app:update-fiat-currencies')
             ->everyFifteenMinutes()
             ->runInBackground()
