@@ -26,6 +26,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN pecl install openswoole \
     && docker-php-ext-enable openswoole
 
+RUN pecl install excimer
+
 # Copy Composer files and install dependencies
 COPY composer.json composer.lock ./
 RUN composer install --no-scripts --no-dev --optimize-autoloader
